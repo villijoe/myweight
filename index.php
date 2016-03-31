@@ -22,13 +22,14 @@
         }
     }
     if (!$form) {
-        require_once "form_template.html";
-    }
+        require_once "form_template.php";
+    } //else { require_once "form_template.php"; }
     ?>
 
 
 
     <script src="ajax.js"></script>
     <script src="graph.js"></script>
+<script src="field.js"></script>
 </body>
 </html>

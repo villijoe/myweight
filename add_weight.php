@@ -7,7 +7,20 @@
  */
 $pdo = new PDO("mysql:host=localhost;dbname=myweight", "root", "") or die("no db connect");
 
-$query = "INSERT INTO weights VALUES(?, ?)";
+$query = "SELECT * FROM weights WHERE date = ?";
 $stmt = $pdo->prepare($query);
-$stmt->execute([$_POST['date'], $_POST['weight']]);
+$stmt->execute([$_POST['date']]);
+foreach($stmt as $row) {
+    echo $row['date'];
+    if ($row['date']) {
+        echo 'hi';
+        header("Location: index.php");
+        exit();
+    }
+}
+
+$query = "INSERT INTO weights(`date`, `weight`) VALUES(?, ?)";
+$stmt = $pdo->prepare($query);
+$weight = (float) $_POST['weight'];;
+$stmt->execute([$_POST['date'], $weight]);
 header("Location: index.php");

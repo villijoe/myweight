@@ -3,9 +3,26 @@
  */
 function graph(obj, array){
     $('#container').highcharts({
+        chart: {
+        },
+        credits: {
+            enabled: false
+        },
+        data: {
+            dateFormat: 'dd/mm/YYYY'
+        },
         title: {
             text: 'My Weight',
             x: -20 //center
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    align: 'center',
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
         },
         subtitle: {
             text: 'Days',
@@ -25,6 +42,7 @@ function graph(obj, array){
             }]
         },
         tooltip: {
+            followPointer: true,
             valueSuffix: ' kg'
         },
         legend: {

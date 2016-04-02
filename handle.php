@@ -9,7 +9,7 @@
 $pdo = new PDO("mysql:host=localhost;dbname=myweight", "root", "") or die("no db connect");
 
 if ($_GET['method'] == "data") {
-    $query = 'SELECT * FROM weights';
+    $query = 'SELECT * FROM weights ORDER BY date';
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     $dates = $weights = [];
